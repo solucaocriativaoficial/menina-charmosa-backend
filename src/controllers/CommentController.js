@@ -17,6 +17,27 @@ module.exports = {
             res.status(400).json({message: error.message})
         }
     },
+    async specific(req,res){
+        try {
+            const content = await Model.findAll({
+                where: {
+                    product: req.params.product_id
+                }
+            });
+            if(!content.length)
+            res.status(200).json({
+                success: false,
+                message: "Nenhum registro encontrado"
+            })
+
+            res.status(200).json({
+                success: true,
+                content: content
+            })
+        } catch (error) {
+            res.status(400).json({message: error.message})
+        }
+    },
     async create(req,res){
         try {
             console.log(req.person_current,"Estou aqui")

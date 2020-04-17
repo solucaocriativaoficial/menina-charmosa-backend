@@ -13,7 +13,7 @@ router.post('/registration', AuthController.registration)
 
 router.get('/shopping/product/', ProductsController.find)
 router.get('/shopping/product/:id/', ProductsController.findById)
-router.get('/comment', CommentController.find)
+router.get('/shoppint/product/:product_id/comment/', CommentController.find)
 
 // only for peoples authenticated
 router.use(CheckAuthentication)
@@ -28,6 +28,7 @@ router.post('/product/add/', ProductsController.create)
 router.put('/product/:id', ProductsController.update)
 router.delete('/product/:id', ProductsController.delete)
 
+router.get('/comment', CommentController.find)
 router.post('/comment/add/', CommentController.create)
 router.put('/comment/:id', CommentController.update)
 router.delete('/comment/:id', CommentController.delete)
