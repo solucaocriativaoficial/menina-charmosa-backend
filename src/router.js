@@ -4,6 +4,7 @@ const router = express();
 const PersonController = require('./controllers/PersonController');
 const ProductsController = require('./controllers/ProductsController');
 const CommentController = require('./controllers/CommentController');
+const Comment_complete = require('./controllers/Comment_complete');
 const BoxController = require('./controllers/BoxController');
 const AuthController = require('./controllers/AuthController');
 const CheckAuthentication = require('./middleware/checkToken');
@@ -13,7 +14,7 @@ router.post('/registration', AuthController.registration)
 
 router.get('/shopping/product/', ProductsController.find)
 router.get('/shopping/product/:id/', ProductsController.findById)
-router.get('/shoppint/product/:product_id/comment/', CommentController.find)
+router.get('/shoppint/product/:product_id/comment/', Comment_complete.find)
 
 // only for peoples authenticated
 router.use(CheckAuthentication)
