@@ -5,11 +5,14 @@ module.exports = {
         try {
             const query_filter = req.query.search === undefined ? '' : req.query.search;
             const content = await Model.findAll({
+                attributes: {
+                    exclude: ["person_modification", "createdAt", "updatedAt"]
+                },
                 where: {
                     product_name: {
                         [Op.iLike]: `%${query_filter}%`
                     }
-                }
+                },
             });
             if(!content.length)
             res.status(200).json({
