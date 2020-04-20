@@ -2,7 +2,11 @@ const Model = require('../models/Box');
 module.exports = {
     async find(req,res){
         try {
-            const content = await Model.findAll();
+            const content = await Model.findAll({
+                where: {
+                    person: req.person_current
+                }
+            });
             if(!content.length)
             res.status(200).json({
                 success: false,
