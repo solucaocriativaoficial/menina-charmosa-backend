@@ -1,13 +1,11 @@
 const Model = require('../models/Box');
+const connection_pg = require('../Database/connection_pg');
 module.exports = {
     async find(req,res){
         try {
-            const content = await Model.findAll({
-                where: {
-                    person: req.person_current
-                }
-            });
-            if(!content.length)
+            const content = await connection_pg.query(`SELECT * FROM box_complete WHERE person=${req.person_current}`);
+            const {rowCount, rows} = content;
+            if(!rowCount)
             res.status(200).json({
                 success: false,
                 message: "Sua caixinha está vázia!"
@@ -15,7 +13,7 @@ module.exports = {
 
             res.status(200).json({
                 success: true,
-                content: content
+                content: rows
             })
         } catch (error) {
             res.status(400).json({message: error.message})
