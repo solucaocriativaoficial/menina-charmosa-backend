@@ -35,6 +35,7 @@ router.put('/comment/:id', CommentController.update)
 router.delete('/comment/:id', CommentController.delete)
 
 router.get('/box', BoxController.find)
+router.get('/box/count/', BoxController.countBox)
 router.post('/box/add/', BoxController.create)
 router.put('/box/:id', BoxController.update)
 router.delete('/box/:id', BoxController.delete)

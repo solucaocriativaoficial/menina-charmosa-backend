@@ -21,6 +21,30 @@ module.exports = {
             res.status(400).json({message: error.message})
         }
     },
+    async countBox(req,res){
+        try {
+            const content = await Model.count({
+                where: {
+                    person: req.person_current
+                }
+            });
+            if(!content.length)
+            res.status(200).json({
+                success: false,
+                message: 0
+            })
+
+            res.status(200).json({
+                success: true,
+                content: content
+            })
+        } catch (error) {
+            res.status(400).json({
+                success: false,
+                content: 'x'
+            })
+        }
+    },
     async create(req,res){
         try {
             const join_data = Object.assign(req.body, {person: req.person_current})
