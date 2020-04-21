@@ -28,12 +28,7 @@ module.exports = {
                     person: req.person_current
                 }
             });
-            if(!content.length)
-            res.status(200).json({
-                success: false,
-                message: 0
-            })
-
+            
             res.status(200).json({
                 success: true,
                 content: content
