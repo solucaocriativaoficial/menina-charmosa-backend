@@ -3,7 +3,7 @@ const connection_pg = require('../Database/connection_pg');
 module.exports = {
     async find(req,res){
         try {
-            const content = await connection_pg.query(`SELECT * FROM box_complete WHERE person=${req.person_current}`);
+            const content = await connection_pg.query(`SELECT * FROM box_complete WHERE person=${req.person_current} AND purchase='not'`);
             const {rowCount, rows} = content;
             if(!rowCount)
             res.status(200).json({
