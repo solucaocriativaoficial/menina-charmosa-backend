@@ -23,7 +23,8 @@ module.exports = {
         try {
             const content = await Model.count({
                 where: {
-                    person: req.person_current
+                    person: req.person_current,
+                    purchase: 'not'
                 }
             });
             
