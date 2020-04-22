@@ -61,7 +61,7 @@ module.exports = {
             const join_data = Object.assign(req.body, {person: req.person_current})
             const content = await Model.update(join_data, {
                 where: {
-                    id: req.params.id
+                    person: req.person_current
                 }
             });
             if(!content)

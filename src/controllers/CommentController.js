@@ -40,7 +40,6 @@ module.exports = {
     },
     async create(req,res){
         try {
-            console.log(req.person_current,"Estou aqui")
             const join_data = Object.assign(req.body, {person: req.person_current})
             const content = await Model.create(join_data);
             if(!content)
